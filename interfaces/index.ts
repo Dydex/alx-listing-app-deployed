@@ -1,9 +1,7 @@
-import ReviewSection from '@/components/property/ReviewSection';
-
 // Placeholder for Card component props
 export interface CardProps {
   image: string;
-  title: string;
+  name: string;
   price: number;
   rating: number;
   address: {

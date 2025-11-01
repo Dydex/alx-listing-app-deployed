@@ -2,11 +2,12 @@ import Image from 'next/image';
 import Button from '@/components/common/Button';
 import Pill from '@/components/common/Pill';
 import { PROPERTYLISTINGSAMPLE } from '@/constants';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { categories } from '@/constants';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
+import axios from 'axios';
+import { PropertyProps } from '@/interfaces';
 
 const Card = dynamic(
   () =>
@@ -42,13 +43,34 @@ const filters = [
 
 export default function Home() {
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
+  const [properties, setProperties] = useState<PropertyProps[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProperties = async () => {
+      try {
+        const response = await axios.get('/api/properties');
+        setProperties(response.data);
+      } catch (error) {
+        console.error('Error fetching properties:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProperties();
+  }, []);
+
+  if (loading) {
+    return <p>Loading....</p>;
+  }
 
   return (
     <>
       <head>
         <title>Property Listings</title>
       </head>
-      <main >
+      <main>
         {/* Different Property Images */}
         <section
           className='
@@ -124,16 +146,9 @@ export default function Home() {
         {/* Card Section */}
         <section className='w-[95%] mx-auto py-4 bg-white text-sm'>
           <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pb-8'>
-            {PROPERTYLISTINGSAMPLE.map((property) => (
+            {properties.map((property) => (
               <Link key={property.id} href={`/property/${property.id}`}>
-                <Card
-                  key={property.name}
-                  title={property.name}
-                  price={property.price}
-                  rating={property.rating}
-                  image={property.image}
-                  address={property.address}
-                />
+                <Card key={property.name} card={property} />
               </Link>
             ))}
           </div>
