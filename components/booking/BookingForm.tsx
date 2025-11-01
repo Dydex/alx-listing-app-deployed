@@ -1,7 +1,24 @@
 import { getNames } from 'country-list';
+import axios from 'axios';
+import { useState } from 'react';
 
 const BookingForm = () => {
   const countries = getNames();
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNumber: '',
+    cardNumber: '',
+    expirationDate: '',
+    cvv: '',
+    billingAddress: '',
+    city: '',
+    state: '',
+    zipcode: '',
+    country: '',
+  });
 
   return (
     <>
@@ -170,9 +187,10 @@ const BookingForm = () => {
           {/* Submit Button */}
           <button
             type='submit'
+            disabled={loading}
             className='mt-10 bg-[#34967c] text-white py-2 px-4 rounded-md w-1/2'
           >
-            Confirm & Pay
+            {loading ? 'Proceesing...' : 'Confirm & Pay'}
           </button>
         </form>
       </div>

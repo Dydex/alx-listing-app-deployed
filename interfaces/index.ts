@@ -55,6 +55,10 @@ export interface ReviewProps {
   rating: number;
 }
 
+export interface ReviewsData {
+  [propertyId: string]: ReviewProps[];
+}
+
 export interface PillProps {
   label: string;
   active?: boolean;

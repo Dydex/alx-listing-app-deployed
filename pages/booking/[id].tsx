@@ -2,6 +2,7 @@ import BookingForm from '@/components/booking/BookingForm';
 import OrderSummary from '@/components/booking/OrderSummary';
 import { PROPERTYLISTINGSAMPLE } from '@/constants';
 import { useRouter } from 'next/router';
+import axios from 'axios';
 
 export default function BookingPage() {
   const Router = useRouter();
@@ -9,6 +10,23 @@ export default function BookingPage() {
 
   const property = PROPERTYLISTINGSAMPLE.find((item) => item.id === id);
   if (!property) return <p>Property not found</p>;
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+
+    use;
+
+    try {
+      const response = await axios.post('/api/bookings', formData);
+      alert('Booking confirmed!');
+    } catch (error) {
+      setError('Failed to submit booking.');
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <>
       <div className=' bg-[#F8FAFC]' onClick={() => Router.back()}>
