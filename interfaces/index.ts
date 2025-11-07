@@ -15,7 +15,7 @@ export interface CardProps {
 export interface ButtonProps {
   label: string;
   onClick: () => void;
-  type?: 'button' | 'submit' | 'reset';
+  type?: "button" | "submit" | "reset";
   className?: string;
   icon?: React.ReactNode;
 }
@@ -53,6 +53,10 @@ export interface ReviewProps {
   comment: string;
   name: string;
   rating: number;
+}
+
+export interface ReviewSectionProps {
+  id: string;
 }
 
 export interface PillProps {
