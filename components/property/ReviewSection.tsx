@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { ReviewProps } from "@/interfaces";
+import Image from "next/image";
 
 const ReviewSection = ({ propertyId }: { propertyId: string }) => {
   const [reviews, setReviews] = useState<ReviewProps[]>([]);
@@ -38,7 +39,7 @@ const ReviewSection = ({ propertyId }: { propertyId: string }) => {
           {reviews.map((item, index) => (
             <div key={index} className=" pb-4 mb-4">
               <div className="flex items-center mb-6">
-                <img
+                <Image
                   src={item.avatar}
                   alt={item.name}
                   className="w-12 h-12 rounded-full mr-4"

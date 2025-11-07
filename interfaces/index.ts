@@ -78,3 +78,10 @@ export interface BookingProps {
   price: number;
   rating: number;
 }
+
+export interface BookingDetails {
+  image: string;
+  name: string;
+  rating: number;
+  price: number;
+}

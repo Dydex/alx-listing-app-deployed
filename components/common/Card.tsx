@@ -8,7 +8,9 @@ const Card: React.FC<{ card: CardProps }> = ({ card }) => {
       <img
         src={card.image}
         alt={card.name}
-        className="w-full h-48 object-cover rounded-xl"
+        width={600}
+        height={192}
+        className="object-cover rounded-xl"
       />
       <div className=" p-2">
         <div className="flex justify-between items-start">

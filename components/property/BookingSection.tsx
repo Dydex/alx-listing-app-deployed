@@ -31,8 +31,12 @@ const BookingSection: React.FC<{ booking: PropertyProps }> = ({ booking }) => {
       return;
     }
 
-    if (new Date(endDate) < new Date(startDate)) endRef.current?.focus;
-    router.push(`/booking/${booking.id}`);
+    if (new Date(endDate) < new Date(startDate)) {
+      endRef.current?.focus();
+      return;
+    } else {
+      router.push(`/booking/${booking.id}`);
+    }
   };
 
   return (

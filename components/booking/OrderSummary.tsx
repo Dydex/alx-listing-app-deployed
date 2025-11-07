@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import Image from "next/image";
+import { BookingDetails } from "@/interfaces";
 
-const OrderSummary: React.FC<{ bookingDetails: any }> = ({
+const OrderSummary: React.FC<{ bookingDetails: BookingDetails }> = ({
   bookingDetails,
 }) => {
   const { startDate, endDate } = useSelector(
@@ -19,10 +20,12 @@ const OrderSummary: React.FC<{ bookingDetails: any }> = ({
       <div className="bg-white p-6 shadow-md rounded-lg">
         <h2 className="text-xl font-semibold">Review Order Details</h2>
         <div className=" items-center w-full mt-4">
-          <img
+          <Image
             src={bookingDetails.image}
             alt={bookingDetails.name}
-            className="w-full h-52 object-cover rounded-md"
+            width={600}
+            height={208}
+            className="object-cover rounded-md"
           />
         </div>
         <div className="mt-4">

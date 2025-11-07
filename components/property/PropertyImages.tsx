@@ -101,29 +101,46 @@ const PropertyImage: React.FC<{ property: PropertyProps }> = ({ property }) => {
 
           {/* Image Grid for Tabs/Desktop */}
           <div className="hidden sm:flex gap-2 mt-4 w-full">
-            <img
-              src={property.image}
-              alt={property.name}
-              className="col-span-2 w-[50%] h-96 object-cover rounded-tl-lg rounded-bl-lg"
-            />
-            <div className="flex flex-col gap-2">
-              <img
+            {/* Left big image */}
+            <div className="relative w-1/2 h-96">
+              <Image
                 src={property.image}
                 alt={property.name}
-                className="col-span-2 w-[99.5%] h-46 rounded-tr-lg"
+                fill
+                className="object-cover rounded-tl-lg rounded-bl-lg"
               />
+            </div>
 
-              <div className="flex gap-2 ">
-                <img
+            {/* Right side grid */}
+            <div className="flex flex-col w-1/2 gap-2">
+              {/* Top wide image */}
+              <div className="relative h-48">
+                <Image
                   src={property.image}
                   alt={property.name}
-                  className="col-span-2 w-[49%] h-48 object-cover"
+                  fill
+                  className="object-cover rounded-tr-lg"
                 />
-                <img
-                  src={property.image}
-                  alt={property.name}
-                  className="col-span-2 w-[49%] h-48 object-cover rounded-br-lg"
-                />
+              </div>
+
+              {/* Bottom two side-by-side images */}
+              <div className="flex gap-2 h-46">
+                <div className="relative w-1/2">
+                  <Image
+                    src={property.image}
+                    alt={property.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="relative w-1/2">
+                  <Image
+                    src={property.image}
+                    alt={property.name}
+                    fill
+                    className="object-cover rounded-br-lg"
+                  />
+                </div>
               </div>
             </div>
           </div>
