@@ -164,10 +164,12 @@ const PropertyImage: React.FC<{ property: PropertyProps }> = ({ property }) => {
               className=" flex overflow-x-auto space-x-4 snap-x snap-mandatory scroll-smooth w-full"
             >
               {images.map((img, index) => (
-                <img
+                <Image
                   key={index}
                   src={img}
                   alt={property.name}
+                  width={800}
+                  height={320}
                   className="w-full h-80 flex-shrink-0 object-cover snap-center"
                 />
               ))}

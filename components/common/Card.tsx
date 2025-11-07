@@ -5,7 +5,7 @@ import Image from "next/image";
 const Card: React.FC<{ card: CardProps }> = ({ card }) => {
   return (
     <div className="bg-white rounded-xl overflow-hidden hover:shadow-lg transition">
-      <img
+      <Image
         src={card.image}
         alt={card.name}
         width={600}

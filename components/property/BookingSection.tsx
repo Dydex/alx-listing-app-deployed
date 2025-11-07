@@ -121,6 +121,7 @@ const BookingSection: React.FC<{ booking: PropertyProps }> = ({ booking }) => {
           <button
             type="submit"
             className="mt-4 w-[100%] bg-[#34967C] text-white py-2 px-4 rounded-md"
+            onClick={() => router.push(`/booking/${booking.id}`)}
           >
             Reserve now
           </button>

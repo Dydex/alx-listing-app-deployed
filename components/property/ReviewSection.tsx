@@ -42,8 +42,11 @@ const ReviewSection = ({ propertyId }: { propertyId: string }) => {
                 <Image
                   src={item.avatar}
                   alt={item.name}
-                  className="w-12 h-12 rounded-full mr-4"
+                  width={48}
+                  height={48}
+                  className="w-12 h-12 rounded-full mr-4 object-cover"
                 />
+
                 <div>
                   <p className="font-bold">{item.name}</p>
                   <p className="text-yellow-500">{item.rating} stars</p>
